@@ -90,8 +90,8 @@ fir::ExtendedValue Fortran::lower::convertProcedureDesignator(
       }
     }
     if (!funcPtrResultLength)
-      funcPtrResultLength = builder.createIntegerConstant(
-          loc, builder.getCharacterLengthType(), -1);
+      funcPtrResultLength =
+          builder.create<fir::UndefOp>(loc, builder.getCharacterLengthType());
     return fir::CharBoxValue{funcPtr, funcPtrResultLength};
   }
   return funcPtr;
